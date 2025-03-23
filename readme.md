@@ -3,6 +3,10 @@
 ## 概述
 這是一個以 Cloudflare Workers 為部署平台的匯率換算工具。該工具能夠抓取畢安Crypto的加密貨幣數據（包括 USDT、BTC、ETH、DOGE、SOL、BNB 等）以及全球主要法定貨幣的匯率，並提供即時換算功能。整個網站設計風格簡潔大方，同時蘊含一絲神祕感，旨在帶給用戶獨特而高效的匯率查詢體驗。
 
+## 直接使用
+您可以直接訪問以下網址使用此匯率換算工具：
+**[https://crypto-exchange-rate.liupony2000.workers.dev/](https://crypto-exchange-rate.liupony2000.workers.dev/)**
+
 ## 功能特點
 - **實時數據抓取**：自動抓取畢安Crypto及各國貨幣匯率，確保數據新鮮。
 - **多貨幣換算**：支持多種加密貨幣與法幣之間的即時換算，方便用戶進行跨幣種轉換。
