@@ -30,6 +30,8 @@ yarn-error.log*
 .vscode/
 *.swp
 *.swo
+*.sublime-workspace
+*.sublime-project
 
 # Cloudflare
 .wrangler/
