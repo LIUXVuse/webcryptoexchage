@@ -74,9 +74,26 @@
      }
      ```
 
-## 可抓取匯率參考網頁
-- TT exchange: https://tt.exchange/
-- 畢安: https://www.binance.com/
+## 可抓取匯率參考來源
+### 加密貨幣 API 來源
+主要來源：
+- Binance API (https://api.binance.com)
+- Binance API v1 (https://api1.binance.com)
+
+備用來源：
+- OKX API (https://www.okx.com/api)
+- CoinGecko API (https://api.coingecko.com)
+- CryptoCompare API (https://min-api.cryptocompare.com)
+
+### 法定貨幣 API 來源
+主要來源：
+- Exchange Rates Data API (https://api.exchangerate.host)
+- Frankfurter API (https://api.frankfurter.app)
+- Open Exchange Rates API (https://open.er-api.com)
+
+備用來源（用於確保 TWD 匯率）：
+- Currency API (https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api)
+- Money Convert API (https://cdn.moneyconvert.net)
 
 ## 支援貨幣
 ### 加密貨幣
