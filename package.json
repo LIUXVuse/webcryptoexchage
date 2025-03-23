@@ -1,0 +1,26 @@
+{
+  "name": "webcryptoexchang",
+  "version": "1.0.0",
+  "description": "這是一個以 Cloudflare Workers 為部署平台的匯率換算工具。該工具能夠抓取畢安Crypto的加密貨幣數據（包括 USDT、BTC、ETH、DOGE、SOL 等）以及全球主要法定貨幣的匯率，並提供即時換算功能。整個網站設計風格簡潔大方，同時蘊含一絲神祕感，旨在帶給用戶獨特而高效的匯率查詢體驗。",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cloudflare-workers",
+    "cryptocurrency",
+    "exchange-rates",
+    "binance",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230807.0",
+    "typescript": "^5.0.4",
+    "wrangler": "^3.0.0"
+  }
+}

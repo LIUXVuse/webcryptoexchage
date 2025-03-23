@@ -1,0 +1,17 @@
+name = "crypto-exchange-rate"
+main = "src/index.ts"
+compatibility_date = "2025-03-21"
+
+# 環境變數
+[vars]
+ENVIRONMENT = "production"
+
+# 排程任務
+[triggers]
+crons = ["*/5 * * * *"] # 每5分鐘執行一次以更新匯率
+
+# 配置KV命名空間 - 用於存儲最近的匯率數據
+[[kv_namespaces]]
+binding = "EXCHANGE_RATES"
+id = "fd1a0defc83d42ee88462a81b85b0686"
+preview_id = "16b1d37008394f10a13b48eb6b72d45e" 

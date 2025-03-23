@@ -1,0 +1,17 @@
+name = "crypto-exchange-rate"
+main = "src/index.ts"
+compatibility_date = "2025-03-21"
+
+[vars]
+# 運行時環境變數
+ENVIRONMENT = "production"
+
+# 觸發器
+[triggers]
+crons = ["*/30 * * * *"] # 每30分鐘執行一次以更新匯率數據
+
+# 設置緩存行為 - 讓匯率數據可在全球邊緣節點緩存
+[[kv_namespaces]]
+binding = "EXCHANGE_RATES"
+id = "fd1a0defc83d42ee88462a81b85b0686"
+preview_id = "16b1d37008394f10a13b48eb6b72d45e" 
