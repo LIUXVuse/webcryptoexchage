@@ -5,7 +5,7 @@
 
 ## 直接使用
 您可以直接訪問以下網址使用此匯率換算工具：
-**[https://crypto-exchange-rate.liupony2000.workers.dev/](https://crypto-exchange-rate.liupony2000.workers.dev/)**
+**[https://crypto-exchange-rate.liupony2000.workers.dev/](https://crypto-exchange-rate.liupony2000.workers.dev/)** (穩定版)
 
 ## 功能特點
 - **實時數據抓取**：自動抓取畢安Crypto及各國貨幣匯率，確保數據新鮮。

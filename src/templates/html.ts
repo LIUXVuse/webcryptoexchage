@@ -5,7 +5,7 @@ import { t, getSupportedLocales, SupportedLocale } from '../models/translations'
  * 生成整個應用的 HTML
  */
 export function generateHTML(data: ExchangeRateData, locale: SupportedLocale = 'zh-TW'): string {
-  const lastUpdated = new Date(data.lastUpdated).toLocaleString(locale, {
+  const lastUpdated = new Date(data.lastUpdated || new Date()).toLocaleString(locale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -330,12 +330,13 @@ export function generateHTML(data: ExchangeRateData, locale: SupportedLocale = '
     
     .fee-options {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 15px;
     }
     
     .fee-option {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 8px;
     }
@@ -344,6 +345,7 @@ export function generateHTML(data: ExchangeRateData, locale: SupportedLocale = '
       display: flex;
       align-items: center;
       gap: 8px;
+      width: 100%;
     }
     
     .fee-input {
@@ -353,7 +355,46 @@ export function generateHTML(data: ExchangeRateData, locale: SupportedLocale = '
     
     .fee-label {
       font-size: 0.9rem;
-      white-space: nowrap;
+      white-space: normal;
+    }
+    
+    /* 手機版排版 */
+    @media (max-width: 767px) {
+      .fee-options {
+        flex-direction: column;
+      }
+      
+      .fee-option {
+        margin-bottom: 10px;
+      }
+      
+      .fee-input-group {
+        margin-top: 5px;
+        width: 100%;
+      }
+    }
+    
+    /* 電腦版排版 */
+    @media (min-width: 768px) {
+      .fee-options {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      
+      .fee-option {
+        flex: 0 0 auto;
+        margin-right: 15px;
+        margin-bottom: 0;
+      }
+      
+      .fee-input-group {
+        width: auto;
+        margin-top: 0;
+      }
+      
+      .fee-label {
+        white-space: nowrap;
+      }
     }
   </style>
 </head>
