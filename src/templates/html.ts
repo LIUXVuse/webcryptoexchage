@@ -396,6 +396,24 @@ export function generateHTML(data: ExchangeRateData, locale: SupportedLocale = '
         white-space: nowrap;
       }
     }
+    
+    /* 法幣表格網格佈局 */
+    .fiat-rates-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    /* 在手機上保持單列 */
+    @media (max-width: 767px) {
+      .fiat-rates-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .fiat-table {
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -547,17 +565,31 @@ export function generateHTML(data: ExchangeRateData, locale: SupportedLocale = '
           
           <div>
             <h3>${t('fiat_in_usd', locale)}</h3>
-            <table class="rate-table">
-              <thead>
-                <tr>
-                  <th>${t('currency', locale)}</th>
-                  <th>${t('exchange_rate', locale)}</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${generateFiatRows(data.fiat, locale)}
-              </tbody>
-            </table>
+            <div class="fiat-rates-grid">
+              <table class="rate-table fiat-table">
+                <thead>
+                  <tr>
+                    <th>${t('currency', locale)}</th>
+                    <th>${t('exchange_rate', locale)}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${generateFiatRowsFirstHalf(data.fiat, locale)}
+                </tbody>
+              </table>
+              
+              <table class="rate-table fiat-table">
+                <thead>
+                  <tr>
+                    <th>${t('currency', locale)}</th>
+                    <th>${t('exchange_rate', locale)}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${generateFiatRowsSecondHalf(data.fiat, locale)}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -871,10 +903,33 @@ function generateCryptoRows(cryptoData: CryptoData[], locale: SupportedLocale = 
 }
 
 /**
- * 生成法幣表格行
+ * 生成法幣表格的前半部分列表
  */
-function generateFiatRows(fiatData: FiatData[], locale: SupportedLocale = 'zh-TW'): string {
-  return fiatData.map(fiat => {
+function generateFiatRowsFirstHalf(fiatData: FiatData[], locale: SupportedLocale = 'zh-TW'): string {
+  const midPoint = Math.ceil(fiatData.length / 2);
+  const firstHalf = fiatData.slice(0, midPoint);
+  
+  return firstHalf.map(fiat => {
+    return `
+      <tr>
+        <td>
+          <span class="currency-symbol">${fiat.symbol}</span>
+          ${fiat.code} - ${fiat.name}
+        </td>
+        <td>${parseFloat(fiat.rate).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 6 })}</td>
+      </tr>
+    `;
+  }).join('\n');
+}
+
+/**
+ * 生成法幣表格的後半部分列表
+ */
+function generateFiatRowsSecondHalf(fiatData: FiatData[], locale: SupportedLocale = 'zh-TW'): string {
+  const midPoint = Math.ceil(fiatData.length / 2);
+  const secondHalf = fiatData.slice(midPoint);
+  
+  return secondHalf.map(fiat => {
     return `
       <tr>
         <td>
