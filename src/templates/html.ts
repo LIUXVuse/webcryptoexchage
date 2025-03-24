@@ -20,7 +20,7 @@ export function generateHTML(data: ExchangeRateData, locale: SupportedLocale = '
     `<option value="${l.code}" ${l.code === locale ? 'selected' : ''}>${l.name}</option>`
   ).join('\n');
 
-  return `
+  let htmlTemplate = `
 <!DOCTYPE html>
 <html lang="${locale}">
 <head>
@@ -803,6 +803,32 @@ export function generateHTML(data: ExchangeRateData, locale: SupportedLocale = '
 </body>
 </html>
   `;
+  
+  // 確保特定於阿拉伯語(ar-SA)的RTL支持
+  if (locale === 'ar-SA') {
+    // 在 HTML 標籤中添加 dir="rtl" 屬性
+    htmlTemplate = htmlTemplate.replace('<html lang="ar-SA">', '<html lang="ar-SA" dir="rtl">');
+    
+    // 添加額外的RTL樣式
+    const rtlStyles = `
+      /* RTL 特定樣式 */
+      body {
+        direction: rtl;
+        text-align: right;
+      }
+      
+      .input-group, .fee-option {
+        text-align: right;
+      }
+      
+      /* 其他可能需要的 RTL 樣式調整 */
+    `;
+    
+    // 將 RTL 樣式添加到現有樣式表中
+    htmlTemplate = htmlTemplate.replace('</style>', rtlStyles + '</style>');
+  }
+
+  return htmlTemplate;
 }
 
 /**

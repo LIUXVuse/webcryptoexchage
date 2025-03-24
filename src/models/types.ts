@@ -43,4 +43,11 @@ export interface ExchangeRateData {
   fiat: FiatExchangeRate[];  // 法定貨幣數據
   timestamp: number;   // 最後更新時間
   lastUpdated?: string; // 添加人類可讀的時間戳
-} 
+}
+
+// 如果有定義支持的法幣列表，確保添加新貨幣
+export const SUPPORTED_FIAT_CURRENCIES = [
+  'USD', 'TWD', 'CNY', 'HKD', 'EUR', 'JPY', 'GBP', 'AUD', 
+  'CAD', 'CHF', 'NZD', 'THB', 'VND', 'IDR',
+  'RUB', 'INR', 'SAR' // 新增支持的法幣
+]; 
